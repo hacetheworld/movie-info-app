@@ -1,0 +1,90 @@
+.sidebar{
+   flex:  0 0 15%;
+   height: 100vh;
+   background-color:var(--color-dark) ;
+
+        &--inner{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+        }
+
+}
+/* Logo styles */
+.logo{
+    width: 70px;
+    height: 70px;
+    align-self: center;
+}
+.nav{
+margin-left: 2rem;
+&-title{
+    font-family:'Opan Sans',sans-serif ;
+    font-size: 1.5rem;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-grey);
+    margin-bottom: .5rem;
+    opacity: 0.4;
+}
+
+&-list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+&-item{
+    position: relative;
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+&-link{
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 10;
+    color: #fff;
+}
+
+
+&-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -2rem;
+    height: 100%;
+    width: 3px;
+    background-color: var(--main-color);
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+    -webkit-transition: width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s, -webkit-transform 0.2s;
+    transition: width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s, -webkit-transform 0.2s;
+    transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s;
+    transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s, -webkit-transform 0.2s;
+}
+
+    &-item:hover::before,
+     &-item--active::before {
+            transform: scaleY(1);
+            width: 3px;
+
+ }
+ &-item--active > &-link{
+    color: var(--main-color) ;
+ }
+
+ &-item:hover > &-link{
+    color: var(--main-color) ;
+ }
+
+
+}

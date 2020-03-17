@@ -1,0 +1,104 @@
+
+.header {
+    font-size: 1.4rem;
+    height: 8rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color:transparent;
+  }
+
+        .search {
+           flex: 0 0 50%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            &__input {
+              font-family: inherit;
+              font-size: inherit;
+              color: inherit;
+              background-color: #ebe8e8fd;
+              border: none;
+              padding: .7rem 2rem;
+              border-radius: 100px;
+              width: 90%;
+              -webkit-transition: all .2s;
+              transition: all .2s;
+              margin-right: -3.25rem;
+             }
+              &__input:focus {
+                outline: none;
+                width: 100%;
+
+                 }
+                 &__input:focus + &__button{
+                  margin-left: 1rem;
+                 }
+              &__input::-webkit-input-placeholder {
+                font-weight: 100;
+                color: #3d3a3afd }
+            &__input:focus  {
+              color: var(--color-dark);
+
+             }
+             &__icon{
+              width: 2.5rem;
+              height: 2.5rem;
+              fill: var(--main-color);
+              padding-top: .5rem;
+             }
+
+            &__button {
+              transition: all .2s;
+              border: none;
+              background-color: transparent;
+              margin-left: -5rem;
+            }
+              &__button:hover{
+              }
+              &__button:focus {
+                outline: none;
+
+              }
+              &__button:active {
+                -webkit-transform: translateY(2px);
+                        transform: translateY(2px); }
+              }
+
+          .user-nav {
+
+            & > * {
+              padding: 0 2rem;
+              cursor: pointer;
+              height: 100%;
+
+            }
+
+            &__icon-box {
+              position: relative;
+
+             }
+
+            &__icon {
+              height: 3rem;
+              width: 3rem;
+              fill: var(--main-color)
+            }
+
+            &__notification {
+              font-size: 1.5rem;
+              font-weight: 400;
+              height: 1.75rem;
+              width: 1.75rem;
+              border-radius: 100%;
+              // background-color: #2bf0f0fd;
+              color: #fff;
+              position: absolute;
+              top: .5rem;
+              right: 2.6rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+             }
+}
