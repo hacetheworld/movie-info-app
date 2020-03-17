@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
       <Sidebar />
-      <Route exact path='/' component={Main} />
-      <Route exact path='/ajay' component={MovieInfo} />
+      <Route exact path='/' render={() => <Main />} />
+      <Route exact path='/ajay' render={() => <MovieInfo />} />
     </div>
   );
 }
