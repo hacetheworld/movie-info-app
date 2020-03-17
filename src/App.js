@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Sidebar />
       <Route exact path='/' component={Main} />
-      <Route exact path='/:ajay' component={MovieInfo} />
+      <Route exact path='/ajay' component={MovieInfo} />
     </div>
   );
 }
