@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Sidebar />
       <Route exact path='/' render={() => <Main />} />
-      <Route exact path='/ajay' render={() => <MovieInfo />} />
+      <Route exact path='https://optimistic-kalam-0538af.netlify.com/ajay' render={() => <MovieInfo />} />
     </div>
   );
 }
