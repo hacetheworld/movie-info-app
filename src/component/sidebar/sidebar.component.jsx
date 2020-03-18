@@ -8,7 +8,9 @@ export default function Sidebar() {
     return (
         <div className='sidebar'>
             <div className="sidebar--inner">
-                <Logo className="logo" alt='logo' />
+                <Link className="logo" to='/'>
+                    <Logo alt='logo' />
+                </Link>
                 <div className="nav">
                     <h1 className='nav-title'> Browse</h1>
                     <ul className="nav-list">

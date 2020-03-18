@@ -1,8 +1,8 @@
 .sidebar{
-   flex:  0 0 15%;
+    position: sticky; /* Fixed Sidebar (stay in place on scroll) */
+    top: 0; /* Stay at the top */
    height: 100vh;
    background-color:var(--color-dark) ;
-
         &--inner{
             height: 100%;
             width: 100%;

@@ -1,8 +1,10 @@
 import React from 'react';
 import Header from '../header/header.component';
 import './movie-info.styles.scss';
-import MovieDetail from '../movie-detail/movie-detail.component';
-export default function MovieInfo() {
+import Movie from '../movie/movie';
+import { connect } from 'react-redux';
+
+function MovieInfo() {
     return (
         <div style={{
             backgroundImage: `
@@ -11,7 +13,10 @@ export default function MovieInfo() {
             backgroundRepeat: 'no-repeat'
         }} className='single-movie-page'>
             <Header />
-            <MovieDetail imageUrl={'https://image.tmdb.org/t/p/original/pCUdYAaarKqY2AAUtV6xXYO8UGY.jpg'} />
+            <Movie imageUrl={'https://image.tmdb.org/t/p/original/pCUdYAaarKqY2AAUtV6xXYO8UGY.jpg'} />
         </div>
     );
 }
+
+
+export default MovieInfo;

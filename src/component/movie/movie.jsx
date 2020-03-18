@@ -1,7 +1,7 @@
 import React from 'react';
-import './movie-detail.styles.scss';
+import './movie.styles.scss';
 import { ReactComponent as Star } from '../../assets/star-outlined.svg'
-export default function MovieDetail({ imageUrl }) {
+export default function Movie({ imageUrl }) {
     return (
         <div className="movie">
             <h1 className='movie__title'>Fight Club</h1>

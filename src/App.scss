@@ -1,4 +1,21 @@
 .App {
-  display: flex;
+  max-width: 100vw;
   min-height: 100vh;
+  display: grid;
+  grid-template-columns:12% 1fr;
+  position: relative;
+}
+
+.btn{
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .1px;
+  border: none;
+  padding: 1rem .5rem;
+  margin: 0 auto;
+  cursor: pointer;
+  background-color: var(--main-color);
+  color: #fff;
 }
