@@ -12,7 +12,9 @@
     &:hover{
         transform: scale(.98);
         box-shadow: 0 .6rem .8rem rgba(0, 0, 0, 0.3);
+
     }
+
 
     &__name{
         font-size: 1.3rem;
@@ -33,17 +35,23 @@
     }
 
     &--overlay{
-        transform: scale(0);
-        transition: all .3s;
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
+        transform: scale(0);
+        transition: all .3s;
         background-color: rgba(13, 32, 43, 0.801);
     }
+
+    &:hover &--overlay{
+        transform: scale(1);
+    }
+
     &__details{
         position: absolute;
+        width: 80%;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
@@ -51,10 +59,23 @@
         flex-direction: column;
         text-align: center;
         color: var(--main-color);
-
+        justify-content: space-between;
         &--rating{
-            font-size: 1.5rem;
-            margin-bottom:.8rem;
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        &--basic-info{
+            font-size: 1.4rem;
+            font-weight: 300;
+
+        }
+
+        &--title{
+            font-size: 1.6rem;
+            font-weight: 100;
+            text-transform: capitalize;
+            color: #fff;
         }
     }
 

@@ -3,14 +3,18 @@ import './main.style.scss';
 import Header from '../header/header.component';
 import HomeContent from '../../pages/home/home-content.component';
 import Trending from '../../pages/trending/trending.component';
-import { Route } from 'react-router-dom';
+import Movie from '../movie/movie';
+import { Route, Switch } from 'react-router-dom';
 function Main() {
 
     return (
         <div className='main'>
             <Header />
-            <Route exact path='/' component={HomeContent} />
-            <Route exact path='/trending' component={Trending} />
+            <Switch>
+                <Route exact path='/' component={HomeContent} />
+                <Route exact path='/trending' component={Trending} />
+                <Route exact path='/:movieId' component={Movie} />
+            </Switch>
         </div>
     );
 }

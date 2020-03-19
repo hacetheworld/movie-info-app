@@ -7,11 +7,15 @@ function MovieList({ title, Movies }) {
             <h2 className='movies-list-topic'>{title}</h2>
             <div className="movies-list__items">
                 {
-                    Movies.map(item => (
+                    Movies.map(movie => (
                         <MovieCard
-                            key={item.id}
-                            name={item.title ? item.title : item.name} imageUrl={item.poster_path}
-                            rating={item.vote_average}
+                            key={movie.id}
+                            id={movie.id}
+                            name={movie.title ? movie.title : movie.name} imageUrl={movie.poster_path}
+                            rating={movie.vote_average}
+                            release_date={movie.release_date}
+                            overview={movie.title ? movie.name : movie.title}
+
                         />
                     ))
                 }

@@ -1,4 +1,5 @@
 .main{
     background-color: var(--color-blue-dark);
-
+    display: grid;
+    grid-template-rows: 15% 1fr;
  }

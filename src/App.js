@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.scss';
 import { Route } from 'react-router-dom';
 import Sidebar from './component/sidebar/sidebar.component';
-import MovieInfo from './component/movie-info/movie-info.component';
 import Main from './component/main/main.component';
 import { SetTrendingMovies, SetLatestMovies } from './redux/actions';
 import { connect } from 'react-redux';
@@ -22,7 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <Sidebar />
-        <Route path='/' render={() => <Main />} />
+        <Main />
       </div>
     )
   }
