@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReactComponent as Star } from '../../assets/star-outlined.svg';
-
+import './singleMovie.styles.scss';
+import Cast from './cast/cast';
 const nestedDataToString = (nestedData) => {
     let nestedArray = [],
         resultString;
@@ -15,8 +16,6 @@ const nestedDataToString = (nestedData) => {
 
 
 const findTrailer = (videos) => {
-    console.log(videos, 'videosjsdbhsbjdscj');
-
     for (let i = 0; i < videos.length; i++) {
         if (videos[i].type = "Trailer") {
             return videos[i];
@@ -24,13 +23,22 @@ const findTrailer = (videos) => {
     }
 };
 
+const findDirector = (crew) => {
+
+    for (let i = 0; i < crew.length; i++) {
+        if (crew[i].job = "Director") {
+            return crew[i];
+        }
+    }
+};
+
+
+
 export default function SingleMovie(props) {
 
     const { movie, isPopup, togglePopup } = props;
-    console.log(movie);
-
     let posterIMG = 'https://image.tmdb.org/t/p/w500' + movie.poster_path,
-        title = movie.original_title ? movie.original_title : movie.title,
+        title = movie.original_title ? movie.title : movie.original_title,
         production_companies = movie.production_companies,
         productionCountries = movie.production_countries,
         runTime = movie.runtime,
@@ -40,6 +48,8 @@ export default function SingleMovie(props) {
         status = movie.status,
         imdb_id = movie.imdb_id,
         id = movie.id,
+        cast = movie.credits.cast.slice(0, 4),
+
         homepage = movie.homepage ? movie.homepage : '',
         genres = movie.genre,
         budget = movie.budget,
@@ -47,11 +57,13 @@ export default function SingleMovie(props) {
         productionList = nestedDataToString(production_companies),
         productionCountriesList = nestedDataToString(productionCountries),
         noData = '-',
+        isVideoExist = movie.videos.results.length > 0,
         genresList = nestedDataToString(genres),
-        videoTrailer = findTrailer(movie.videos.results),
-        videoUrl = movie.videos ? videoTrailer.key : false,
-        backdropIMG = 'https://image.tmdb.org/t/p/original' + movie.backdrop;
-
+        videoTrailer = isVideoExist ? findTrailer(movie.videos.results) : { key: '' },
+        videoUrl = isVideoExist ? videoTrailer.key : false,
+        backdropIMG = 'https://image.tmdb.org/t/p/original' + movie.backdrop,
+        crew = movie.credits.crew,
+        castimageUrl = 'https://image.tmdb.org/t/p/original';
     // conditional statements for no movie
     if (rating === 'undefined' || rating === 0) {
         rating = noData
@@ -98,7 +110,6 @@ export default function SingleMovie(props) {
                 <span className="movie__info--release-date">
                     {release_date}
                 </span>
-                <span className='movie__info--age'>18+</span>
             </div>
             <p className='movie__plot'>{overview}</p>
             <div className="movie__buttons">
@@ -106,33 +117,15 @@ export default function SingleMovie(props) {
                 <button className="btn movie__faviourate">Add To Faviourate</button>
             </div>
             <div className='movie__cast_details'>
-                <div className="movie__casts">
 
-                    <div className="movie__cast">
-                        <img src={posterIMG} className='cast-img' alt="cast" />
-                        <p>Ajay</p>
-                    </div>
+                <Cast casts={cast} castimageUrl={castimageUrl} />
 
-                    <div className="movie__cast">
-                        <img src={posterIMG} className='cast-img' alt="cast" />
-                        <p>Ajay</p>
-                    </div>
-
-                    <div className="movie__cast">
-                        <img src={posterIMG} className='cast-img' alt="cast" />
-                        <p>Ajay</p>
-                    </div>
-                    <div className="movie__cast">
-                        <img src={posterIMG} className='cast-img' alt="cast" />
-                        <p>Ajay</p>
-                    </div>
-                </div>
                 <div className="movie__director">
                     <h1>Directed by</h1>
-                    <p>ajay</p>
-                    <p>ajay</p>
-                    <p>ajay</p>
-                    <p>ajay</p>
+                    <p style={{
+                        color: 'sky-blue',
+                    }}>{`${findDirector(crew).name}`}</p>
+
                 </div>
             </div>
 
@@ -146,15 +139,17 @@ export default function SingleMovie(props) {
                 className={`popup ${isPopup ? 'popup--active' : ''}`}>
                 <div className="popup-wrapper">
                     {
-                        movie.videos ? (<iframe id='demoVideo' width="560" height="315" src={`https://www.youtube.com/embed/${videoUrl}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>) : (
-                            <img src={posterIMG} className='cast-img' alt="cast" />
+                        isVideoExist ? (<iframe id='demoVideo' width="560" height="315" src={`https://www.youtube.com/embed/${videoUrl}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>) : (
+                            <h1 >Video does not found</h1>
                         )
                     }
                     <span className='close-popup' onClick={() => {
-                        let iframeDiv = document.getElementById('demoVideo');
-                        let video = iframeDiv.src;
-                        iframeDiv.src = "";
-                        iframeDiv.src = video;
+                        if (isVideoExist) {
+                            let iframeDiv = document.getElementById('demoVideo');
+                            let video = iframeDiv.src;
+                            iframeDiv.src = "";
+                            iframeDiv.src = video;
+                        }
                         togglePopup();
                     }}>X</span>
                 </div>

@@ -1,7 +1,10 @@
 .sidebar{
-    position: sticky; /* Fixed Sidebar (stay in place on scroll) */
-    top: 0; /* Stay at the top */
-   height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+     grid-column: 1/2;
+    width: 200px;
+    height: 100vh;
    background-color:var(--color-dark) ;
         &--inner{
             height: 100%;

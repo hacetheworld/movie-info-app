@@ -2,7 +2,8 @@ import { actionTypes } from '../action.types';
 
 const INITIAL_STATE = {
     trendingMovies: [],
-    latestMovies: []
+    latestMovies: [],
+    searchMovies: []
 }
 
 
@@ -12,6 +13,11 @@ export const setMovieReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 trendingMovies: action.payload
+            }
+        case actionTypes.QUERYMOVIES:
+            return {
+                ...state,
+                searchMovies: action.payload
             }
         case actionTypes.LATEST_MOVIES:
             return {

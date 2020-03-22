@@ -1,13 +1,25 @@
 import React from 'react';
 import './movie-list.styles.scss';
 import MovieCard from '../movie-card/movie-card.component';
-function MovieList({ title, Movies }) {
+function MovieList({ title, Movies, doFilter = true }) {
+    function filterMovies(movies, doFilter) {
+        if (doFilter) {
+            return movies.filter(movie => {
+                let movieType = movie.media_type ? movie.media_type === 'movie' : true;
+                return (movieType && movie.vote_count >= 100 && movie.vote_average >= 6 && (movie.release_date ? movie.release_date.split('-')[0] > 2010 : false)
+                )
+            });
+        }
+
+        return movies
+    }
+    const filteredMovies = filterMovies(Movies);
     return (
         <div className='movies-list'>
             <h2 className='movies-list-topic'>{title}</h2>
             <div className="movies-list__items">
                 {
-                    Movies.map(movie => (
+                    filteredMovies.map(movie => (
                         <MovieCard
                             key={movie.id}
                             id={movie.id}

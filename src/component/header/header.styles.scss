@@ -1,11 +1,12 @@
 
 .header {
+  grid-row: 1/2;
     font-size: 1.4rem;
-    height: 8rem;
+   // height: 8rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
-  margin-bottom: 5rem;
+  // margin-bottom: 5rem;
     background-color:transparent;
   }
 
@@ -17,7 +18,7 @@
             &__input {
               font-family: inherit;
               font-size: inherit;
-              color: inherit;
+              color: #000;
               background-color: #ebe8e8fd;
               border: none;
               padding: .7rem 2rem;
@@ -30,18 +31,17 @@
               &__input:focus {
                 outline: none;
                 width: 100%;
+                color: #000;
 
                  }
                  &__input:focus + &__button{
                   margin-left: 1rem;
+
                  }
               &__input::-webkit-input-placeholder {
                 font-weight: 100;
-                color: #3d3a3afd }
-            &__input:focus  {
-              color: var(--color-dark);
+                color: #000 }
 
-             }
              &__icon{
               width: 2.5rem;
               height: 2.5rem;
@@ -50,10 +50,13 @@
              }
 
             &__button {
+              width: 3rem;
+              height: 3rem;
               transition: all .2s;
               border: none;
               background-color: transparent;
               margin-left: -5rem;
+              cursor: pointer;
             }
               &__button:hover{
               }
