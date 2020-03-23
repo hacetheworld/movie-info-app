@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ReactComponent as Github } from '../../assets/github.svg';
 import Search from '../search/search';
-import UserImg from '../../assets/user-3.jpg';
+// import UserImg from '../../assets/user-3.jpg';
 import './header.styles.scss'
 export default function Header() {
 

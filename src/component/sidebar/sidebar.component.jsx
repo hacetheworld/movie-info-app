@@ -1,6 +1,6 @@
 import React from 'react';
 import './sidebar.styles.scss';
-import { Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 export default function Sidebar(props) {
     return (

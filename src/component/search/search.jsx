@@ -3,6 +3,8 @@ import { ReactComponent as MagnifyingGlass } from '../../assets/magnifying-glass
 import { SetSearchedMovies } from '../../redux/actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+
+import { API_KEY } from '../../App';
 class Search extends Component {
 
     constructor(props) {
@@ -23,7 +25,7 @@ class Search extends Component {
         this.setState({ searchValue: '' });
     }
     searchQuery = searchValue => {
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=209e42e2c66ab2cba7c280981a877ace&language=en-US&query=${searchValue}&page=1&include_adult=false`)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`)
             .then(response => response.json())
             .then(jsonResponse => {
                 if (jsonResponse.status_code) {

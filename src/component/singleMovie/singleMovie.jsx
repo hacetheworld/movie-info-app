@@ -17,7 +17,7 @@ const nestedDataToString = (nestedData) => {
 
 const findTrailer = (videos) => {
     for (let i = 0; i < videos.length; i++) {
-        if (videos[i].type = "Trailer") {
+        if (videos[i].type === "Trailer") {
             return videos[i];
         }
     }
@@ -26,7 +26,7 @@ const findTrailer = (videos) => {
 const findDirector = (crew) => {
 
     for (let i = 0; i < crew.length; i++) {
-        if (crew[i].job = "Director") {
+        if (crew[i].job === "Director") {
             return crew[i];
         }
     }
@@ -35,33 +35,32 @@ const findDirector = (crew) => {
 
 
 export default function SingleMovie(props) {
-
     const { movie, isPopup, togglePopup } = props;
     let posterIMG = 'https://image.tmdb.org/t/p/w500' + movie.poster_path,
         title = movie.original_title ? movie.title : movie.original_title,
-        production_companies = movie.production_companies,
-        productionCountries = movie.production_countries,
+        // production_companies = movie.production_companies,
+        // productionCountries = movie.production_countries,
         runTime = movie.runtime,
         rating = movie.vote_average,
         overview = movie.overview,
         release_date = movie.release_date,
-        status = movie.status,
-        imdb_id = movie.imdb_id,
-        id = movie.id,
+        // status = movie.status,
+        // imdb_id = movie.imdb_id,
+        // id = movie.id,
         cast = movie.credits.cast.slice(0, 4),
 
-        homepage = movie.homepage ? movie.homepage : '',
+        // homepage = movie.homepage ? movie.homepage : '',
         genres = movie.genre,
-        budget = movie.budget,
+        // budget = movie.budget,
         totalRevenue = movie.revenue,
-        productionList = nestedDataToString(production_companies),
-        productionCountriesList = nestedDataToString(productionCountries),
+        // productionList = nestedDataToString(production_companies),
+        // productionCountriesList = nestedDataToString(productionCountries),
         noData = '-',
         isVideoExist = movie.videos.results.length > 0,
         genresList = nestedDataToString(genres),
         videoTrailer = isVideoExist ? findTrailer(movie.videos.results) : { key: '' },
         videoUrl = isVideoExist ? videoTrailer.key : false,
-        backdropIMG = 'https://image.tmdb.org/t/p/original' + movie.backdrop,
+        // backdropIMG = 'https://image.tmdb.org/t/p/original' + movie.backdrop,
         crew = movie.credits.crew,
         castimageUrl = 'https://image.tmdb.org/t/p/original';
     // conditional statements for no movie
@@ -139,7 +138,7 @@ export default function SingleMovie(props) {
                 className={`popup ${isPopup ? 'popup--active' : ''}`}>
                 <div className="popup-wrapper">
                     {
-                        isVideoExist ? (<iframe id='demoVideo' width="560" height="315" src={`https://www.youtube.com/embed/${videoUrl}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>) : (
+                        isVideoExist ? (<iframe title={'video'} id='demoVideo' width="560" height="315" src={`https://www.youtube.com/embed/${videoUrl}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>) : (
                             <h1 >Video does not found</h1>
                         )
                     }

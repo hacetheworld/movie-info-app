@@ -13,7 +13,7 @@ function MovieList({ title, Movies, doFilter = true }) {
 
         return movies
     }
-    const filteredMovies = filterMovies(Movies);
+    const filteredMovies = filterMovies(Movies, doFilter);
     return (
         <div className='movies-list'>
             <h2 className='movies-list-topic'>{title}</h2>
